@@ -33,8 +33,8 @@ def talker(yolov5_wrapper):
             centerRight = (int(bboxesRight[0]) + int(bboxesRight[2] / 2), int(bboxesRight[1]) + int(bboxesRight[3] / 2))
             #   Distance estimation
             distance = findDis(centerRight, centerLeft, frameRight, frameLeft)
-            cv2.putText(imgLeft, "Depth: " + str(distance), (50,80), cv2.FONT_HERSHEY_SIMPLEX, 1, (0,255,0), 2)
-            cv2.putText(imgRight, "Depth: " + str(distance), (50,80), cv2.FONT_HERSHEY_SIMPLEX, 1, (0,255,0), 2)
+            # cv2.putText(imgLeft, "Depth: " + str(distance), (50,80), cv2.FONT_HERSHEY_SIMPLEX, 1, (0,255,0), 2)
+            # cv2.putText(imgRight, "Depth: " + str(distance), (50,80), cv2.FONT_HERSHEY_SIMPLEX, 1, (0,255,0), 2)
 
             #   Publishing a message
             msg.x = centerLeft[0]
@@ -44,8 +44,8 @@ def talker(yolov5_wrapper):
             # rate.sleep()
         
         #   Visulize results
-        cv2.imshow("GrapeLeft", imgLeft)
-        cv2.imshow("GrapeRight", imgRight)
+        # cv2.imshow("GrapeLeft", imgLeft)
+        # cv2.imshow("GrapeRight", imgRight)
 
         if cv2.waitKey(25) & 0xFF == ord('q'):
             break

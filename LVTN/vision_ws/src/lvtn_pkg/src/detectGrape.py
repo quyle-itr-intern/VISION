@@ -176,13 +176,13 @@ class YoLov5TRT(object):
             for j in range(len(result_boxes)):
                 bbox = result_boxes[j]
                 bboxes =  np.append(bboxes, bbox)
-                plot_one_box(
-                    bbox,
-                    batch_image_raw[i],
-                    label="{}:{:.2f}".format(
-                        categories[int(result_classid[j])], result_scores[j]
-                    ),
-                )
+                # plot_one_box(
+                #     bbox,
+                #     batch_image_raw[i],
+                #     label="{}:{:.2f}".format(
+                #         categories[int(result_classid[j])], result_scores[j]
+                #     ),
+                # )
         return batch_image_raw, bboxes, end - start
 
     def destroy(self):
@@ -367,17 +367,17 @@ class YoLov5TRT(object):
 
 def vizLeft(yolov5_wrapper, image):
     batch_image_raw, bboxes, use_time = yolov5_wrapper.infer([image])
-    result = cv2.resize(batch_image_raw[0], dsize=None, fx=0.7, fy=0.7)
-    cv2.putText(result, "FPS: " + str(round(1/use_time, 1)), (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
+    # result = cv2.resize(batch_image_raw[0], dsize=None, fx=0.7, fy=0.7)
+    # cv2.putText(result, "FPS: " + str(round(1/use_time, 1)), (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
     # cv2.imshow("GrapeLeft", result)
-    return bboxes, result
+    return bboxes, batch_image_raw[0]
 
 def vizRight(yolov5_wrapper, image):
     batch_image_raw, bboxes, use_time = yolov5_wrapper.infer([image])
-    result = cv2.resize(batch_image_raw[0], dsize=None, fx=0.7, fy=0.7)
-    cv2.putText(result, "FPS: " + str(round(1/use_time, 1)), (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
+    # result = cv2.resize(batch_image_raw[0], dsize=None, fx=0.7, fy=0.7)
+    # cv2.putText(result, "FPS: " + str(round(1/use_time, 1)), (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
     # cv2.imshow("GrapeRight", result) 
-    return bboxes, result
+    return bboxes, batch_image_raw[0]
 
 def findBbox(yolov5_wrapper, imageLeft, imageRight):
     bboxesLeft, imgLeft = vizLeft(yolov5_wrapper, imageLeft)

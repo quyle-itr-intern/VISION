@@ -18,7 +18,7 @@ def findDis(centerRight, centerLeft, frameRight, frameLeft):
     # cv2.putText(frameRight, "Distance: " + str(round(depth,1)), (50,50), cv2.FONT_HERSHEY_SIMPLEX, 1.2, (0,255,0),3)
     # cv2.putText(frameLeft, "Distance: " + str(round(depth,1)), (50,50), cv2.FONT_HERSHEY_SIMPLEX, 1.2, (0,255,0),3)
     # Multiply computer value with 205.8 to get real-life depth in [cm]. The factor was found manually.
-    print("  => Depth: ", str(round(depth,1)))
+    # print("  => Depth: ", str(round(depth,1)))
     return round(depth,1)
 
 
